@@ -3,7 +3,6 @@ import { useQuizGame } from "../hooks/useQuizGame";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
-
 export default function Quiz() {
   const navigate = useNavigate();
   const { questions, loading, error, refetch } = useQuiz();
@@ -17,8 +16,6 @@ export default function Quiz() {
     handleAnswer,
     getCurrentAnswer,
   } = useQuizGame(questions);
-
- 
 
   return (
     <>
@@ -40,14 +37,13 @@ export default function Quiz() {
 
       {!loading && !error && questions?.length > 0 && currentQuestion && (
         <div className="space-y-8">
-          {/* Progress indicator */}
           <div className="flex justify-between items-center text-delft-blue/70">
             <span>
               Question {currentQuestionIndex + 1} of {questions.length}
             </span>
             <div className="h-2 w-full max-w-xs mx-4 bg-delft-blue/20 rounded-full">
               <div
-                className="h-full bg-cambridge-blue rounded-full transition-all"
+                className="h-full bg-burnt-sienna rounded-full transition-all"
                 style={{
                   width: `${
                     ((currentQuestionIndex + 1) / questions.length) * 100
@@ -57,8 +53,7 @@ export default function Quiz() {
             </div>
           </div>
 
-          {/* Current question */}
-          <div className="bg-white/50 rounded-lg p-6 shadow-lg">
+          <div className="bg-eggshell/70 rounded-2xl p-6 ">
             <h2 className="text-2xl text-delft-blue mb-4">
               {currentQuestion.question}
             </h2>
@@ -70,11 +65,11 @@ export default function Quiz() {
                   <li
                     key={option}
                     onClick={() => handleAnswer(index)}
-                    className={`p-3 bg-white rounded border cursor-pointer transition-colors
+                    className={`w-full rounded-xl  bg-cambridge-blue/20 px-5 py-3 text-delft-blue transition-colors duration-150 
                                             ${
                                               isSelected
-                                                ? "border-burnt-sienna bg-burnt-sienna/10 text-burnt-sienna"
-                                                : "border-cambridge-blue/20 hover:border-cambridge-blue"
+                                                ? "border-cambridge-blue/50 bg-cambridge-blue/60 ring-2 ring-cambridge-blue/30"
+                                                : "border-delft-blue/25 bg-cambridge-blue/20 hover:bg-cambridge-blue/10"
                                             }`}
                   >
                     {option}
@@ -83,8 +78,6 @@ export default function Quiz() {
               })}
             </ul>
           </div>
-
-          {/* Navigation buttons */}
           <div className="flex justify-between pt-4">
             <Button
               onClick={handlePreviousQuestion}
@@ -97,7 +90,7 @@ export default function Quiz() {
             <Button
               onClick={() => {
                 if (isLastQuestion) {
-                  navigate('/result');
+                  navigate("/result");
                 } else {
                   handleNextQuestion();
                 }

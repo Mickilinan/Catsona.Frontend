@@ -18,7 +18,7 @@ export default function Result() {
     if (answers.length > 0) {
       calculateResult(answers);
     }
-  }, [answers, calculateResult]);
+  }, [answers, answers.length, calculateResult]);
 
   if (answers.length === 0) {
     return (
@@ -51,15 +51,13 @@ export default function Result() {
       </h2>
       <div className="mb-6">
         {personaMedia[result.persona.name]?.lottie ? (
-          <div className="w-48 h-48 mx-auto">        
-            <p className="text-sm text-delft-blue/60">
-              <Lottie
-                animationData={personaMedia[result.persona.name].lottie}
-                className="w-48 h-48 mx-auto"
-                loop={true}
-                autoplay={true}
-              />
-            </p>
+          <div className="w-48 h-48 mx-auto">
+            <Lottie
+              animationData={personaMedia[result.persona.name].lottie}
+              className="w-48 h-48 mx-auto"
+              loop={true}
+              autoplay={true}
+            />
           </div>
         ) : personaMedia[result.persona.name]?.image ? (
           <img

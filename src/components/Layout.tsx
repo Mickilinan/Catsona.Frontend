@@ -11,7 +11,7 @@ export default function Layout({ children }: LayoutProps) {
             <div className="absolute top-1/2 -translate-y-1/2 left-5 w-32 h-32 bg-burnt-sienna/40 rounded-full blur-2xl"></div>
 
             {/* Content container */}
-            <div className="max-w-4xl mx-auto text-center relative z-10">
+            <div className="max-w-4xl mx-auto text-center relative z-10 w-[600px]">
                 {children}
             </div>
         </div>

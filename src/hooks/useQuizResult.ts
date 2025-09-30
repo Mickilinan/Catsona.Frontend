@@ -13,7 +13,7 @@ export const useQuizResult = () => {
             setError(null);
 
             const submissionData = {
-                answers: answers.map(answer => ({
+                Answers: answers.map(answer => ({
                     questionId: answer.questionId,
                     optionIndex: answer.selectedOptionIndex
                 }))
