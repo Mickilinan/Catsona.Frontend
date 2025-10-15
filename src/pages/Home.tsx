@@ -1,4 +1,4 @@
-import homeCats from "@/assets/catPersonas/homeCats.png";
+import homeCats from "/src/assets/catPersonas/homeCats.png";
 import StartOverDialog from "@/components/StartOverDialog";
 import { Button } from "@/components/ui/button";
 import { useQuiz } from "@/hooks/useQuiz";

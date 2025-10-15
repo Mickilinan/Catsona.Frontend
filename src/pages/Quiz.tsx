@@ -2,6 +2,8 @@ import { useQuiz } from "../hooks/useQuiz";
 import { useQuizGame } from "../hooks/useQuizGame";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { Mascot } from "@/components/Mascot";
+import { getCatSize, getCatVerticalPosition, getQuestionAlt, getQuestionMedia } from "@/lib/utils";
 
 export default function Quiz() {
   const navigate = useNavigate();
@@ -37,11 +39,15 @@ export default function Quiz() {
 
       {!loading && !error && questions?.length > 0 && currentQuestion && (
         <div className="space-y-8">
-          <div className="flex justify-between items-center text-delft-blue/70">
-            <span>
+          <div className="relative flex justify-between items-center text-delft-blue/70">
+          <span>
               Question {currentQuestionIndex + 1} of {questions.length}
             </span>
-            <div className="h-2 w-full max-w-xs mx-4 bg-delft-blue/20 rounded-full">
+
+
+       
+           
+            <div className="h-2 w-full max-w-xs mx-4 bg-delft-blue/20 rounded-full relative">
               <div
                 className="h-full bg-burnt-sienna rounded-full transition-all"
                 style={{
@@ -50,6 +56,19 @@ export default function Quiz() {
                   }%`,
                 }}
               />
+
+                   
+<div className={`block absolute ${getCatVerticalPosition(currentQuestion.id)} left-0 transform -translate-x-1/2 z-10`}
+            style={{
+              left: `${((currentQuestionIndex + 1) / questions.length) * 100 - 14}%`
+            }}>
+              <Mascot
+               media={getQuestionMedia(currentQuestion.id)}
+               alt={getQuestionAlt(currentQuestion.id)}
+               className={`${getCatSize(currentQuestion.id)} object-contain`}
+
+              />
+            </div>
             </div>
           </div>
 
@@ -65,7 +84,7 @@ export default function Quiz() {
                   <li
                     key={option}
                     onClick={() => handleAnswer(index)}
-                    className={`w-full rounded-xl  bg-cambridge-blue/20 px-5 py-3 text-delft-blue transition-colors duration-150 
+                    className={`w-full rounded-xl  bg-cambridge-blue/20 px-5 py-3 text-delft-blue transition-colors duration-150 cursor-pointer
                                             ${
                                               isSelected
                                                 ? "border-cambridge-blue/50 bg-cambridge-blue/60 ring-2 ring-cambridge-blue/30"
@@ -82,7 +101,6 @@ export default function Quiz() {
             <Button
               onClick={handlePreviousQuestion}
               disabled={currentQuestionIndex === 0}
-              variant="outline"
               className="btn-primary"
             >
               Previous

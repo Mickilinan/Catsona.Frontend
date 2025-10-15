@@ -13,3 +13,9 @@
            hover:bg-cambridge-blue/90 transform hover:-translate-y-0.5 transition-all duration-200;
   }
 }
+
+img {
+  loading: eager;
+  max-width: none;
+  transition: opacity 0.2s ease-in-out;
+}

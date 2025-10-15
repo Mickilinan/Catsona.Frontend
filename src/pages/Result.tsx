@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import StartOverDialog from "@/components/StartOverDialog";
-import { personaMedia } from "@/assets/personaImages";
+import { personaMedia } from "../assets/personaImages";
 import Lottie from "lottie-react";
 
 export default function Result() {
